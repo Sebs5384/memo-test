@@ -1,0 +1,15 @@
+body {
+  background-image: url(img/world-cup-qatar-2022-logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#test-1 {
+  background-color: gold;
+  border-color: bluez;
+}
+
+#card-1 {
+  width: 150px;
+  border-color: gold;
+}
