@@ -4,12 +4,22 @@ body {
   background-size: cover;
 }
 
-#test-1 {
-  background-color: gold;
-  border-color: bluez;
+#head-container {
+  background-image: url(img/qatar-background.jpg);
 }
 
-#card-1 {
+#table img {
   width: 150px;
+  height: 190px;
   border-color: gold;
+}
+
+.world-cup-trophy {
+  height: 75px;
+  width: 75px;
+}
+
+strong {
+  color: gold;
+  font-family: Verdana, sans-serif;
 }
