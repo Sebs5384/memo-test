@@ -23,3 +23,30 @@ strong {
   color: gold;
   font-family: Verdana, sans-serif;
 }
+
+#table div div {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#table img {
+  transform: rotateY(180deg);
+  transition: 1s;
+}
+
+#table img + img {
+  transform: rotateY(180deg);
+  transition: 1s;
+  position: absolute;
+  backface-visibility: hidden;
+  left: 88px;
+  top: 0px;
+}
+
+#table div div:hover img {
+  transform: rotateY(0deg);
+}
+
+.hidden {
+  display: none;
+}
