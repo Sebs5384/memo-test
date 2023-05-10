@@ -43,7 +43,7 @@ strong {
   top: 0px;
 }
 
-#table div div:hover img {
+#table div div.flipped img {
   transform: rotateY(0deg);
 }
 
