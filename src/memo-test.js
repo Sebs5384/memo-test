@@ -3,14 +3,18 @@ document.querySelector("#start-button").onclick = () => {
 };
 
 document.querySelector("#table").onclick = (event) => {
+  const $img = Array.from(document.querySelectorAll("#table img"));
   const $clickedCard = event.target;
-  handleClicks($clickedCard);
+
+  if ($img.includes($clickedCard)) {
+    handleClicks($clickedCard);
+  }
 };
 
 function startGame() {
   const cards = shuffledSetOfCards(cardValues);
   createCards(cards);
-  setPointerEvents("#table", "auto");
+  setTableClickable(true);
 }
 
 function createCards(cards) {
@@ -32,24 +36,37 @@ function createCards(cards) {
 }
 
 function handleClicks(click) {
-  click.classList.add("col-3", "gy-1", "cards", "flipped");
-  if (flipped === "") {
-    flipped = click;
+  let actualClick = click;
+  actualClick.classList.add("col-3", "gy-1", "cards", "flipped");
+
+  if (previousClick === "") {
+    previousClick = actualClick;
   } else {
-    const success = flipped.getAttribute("src") === click.getAttribute("src");
+    const previousClickCard = previousClick.getAttribute("src");
+    const actualClickCard = actualClick.getAttribute("src");
+
+    const success = previousClickCard === actualClickCard;
     if (success) {
       matchCards(click);
+      matchedCards.push(actualClick);
+
+      if (matchedCards.length === 6) {
+        console.log("ganaste");
+      }
     } else {
+      setTableClickable(false);
       setTimeout(() => {
-        removeFlipped(click);
+        removeFlippedCards(click);
+        setTableClickable(true);
       }, 1500);
     }
-    flipped = "";
+    previousClick = "";
   }
 }
 
-function setPointerEvents(selector, value) {
-  document.querySelector(selector).style.pointerEvents = value;
+function setTableClickable(isClickeable) {
+  const pointerEventsValue = isClickeable ? "auto" : "none";
+  document.querySelector("#table").style.pointerEvents = pointerEventsValue;
 }
 
 function matchCards(card) {
@@ -57,7 +74,7 @@ function matchCards(card) {
   document.querySelector(".flipped").classList.replace("flipped", "matched");
 }
 
-function removeFlipped(card) {
+function removeFlippedCards(card) {
   card.classList.remove("flipped");
   document.querySelector(".flipped").classList.remove("flipped");
 }
