@@ -37,16 +37,21 @@ strong {
 #table img + img {
   transform: rotateY(180deg);
   transition: 1s;
-  position: absolute;
   backface-visibility: hidden;
+  position: absolute;
   left: 88px;
   top: 0px;
 }
 
-#table div div.flipped img {
+#table div div img.flipped,
+#table div div img.flipped + img {
   transform: rotateY(0deg);
 }
 
 .hidden {
   display: none;
+}
+
+#table {
+  pointer-events: none;
 }
