@@ -19,6 +19,12 @@ body {
   width: 75px;
 }
 
+.star {
+  height: 38px;
+  width: 38px;
+  opacity: 0;
+}
+
 strong {
   color: gold;
   font-family: Verdana, sans-serif;
