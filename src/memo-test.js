@@ -13,6 +13,7 @@ document.querySelector("#table").onclick = (event) => {
 
 function startGame() {
   const cards = shuffledSetOfCards(cardValues);
+  hideStartButton();
   createCards(cards);
   setTableClickable(true);
 }
@@ -62,6 +63,10 @@ function handleClicks(click) {
     }
     previousClick = "";
   }
+}
+
+function hideStartButton() {
+  document.querySelector("#start-button").className = "hidden";
 }
 
 function setTableClickable(isClickeable) {
