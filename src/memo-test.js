@@ -15,6 +15,12 @@ function startGame() {
 
 function createCards(cards) {
   const $containers = document.querySelectorAll(".cards-container");
+  const $img = document.querySelectorAll(".cards-container img");
+
+  $img.forEach((img, index) => {
+    const cardValue = cards[index];
+    img.src = `img/unflipped-card-${cardValue}.jpg`;
+  });
 
   $containers.forEach((container, index) => {
     const cardValue = cards[index];
@@ -25,8 +31,33 @@ function createCards(cards) {
   });
 }
 
-function handleClicks(click) {}
+function handleClicks(click) {
+  click.classList.add("col-3", "gy-1", "cards", "flipped");
+  if (flipped === "") {
+    flipped = click;
+  } else {
+    const success = flipped.getAttribute("src") === click.getAttribute("src");
+    if (success) {
+      matchCards(click);
+    } else {
+      setTimeout(() => {
+        removeFlipped(click);
+      }, 1500);
+    }
+    flipped = "";
+  }
+}
 
 function setPointerEvents(selector, value) {
   document.querySelector(selector).style.pointerEvents = value;
+}
+
+function matchCards(card) {
+  card.classList.replace("flipped", "matched");
+  document.querySelector(".flipped").classList.replace("flipped", "matched");
+}
+
+function removeFlipped(card) {
+  card.classList.remove("flipped");
+  document.querySelector(".flipped").classList.remove("flipped");
 }
