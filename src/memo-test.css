@@ -48,6 +48,11 @@ strong {
   transform: rotateY(0deg);
 }
 
+#table div div img.matched,
+#table div div img.matched + img {
+  transform: rotateY(0deg);
+}
+
 .hidden {
   display: none;
 }
