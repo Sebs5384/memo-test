@@ -14,6 +14,7 @@ document.querySelector("#table").onclick = (event) => {
 function startGame() {
   const cards = shuffledSetOfCards(cardValues);
   hideStartButton();
+  displayStars();
   createCards(cards);
   setTableClickable(true);
 }
@@ -49,9 +50,10 @@ function handleClicks(click) {
     const success = previousClickCard === actualClickCard;
     if (success) {
       matchCards(click);
-      matchedCards.push(actualClick);
+      glowStars(success);
+      matchedCards.push(...[actualClick, previousClick]);
 
-      if (matchedCards.length === 6) {
+      if (matchedCards.length === 12) {
         console.log("ganaste");
       }
     } else {
@@ -65,8 +67,29 @@ function handleClicks(click) {
   }
 }
 
+function glowStars(success) {
+  let $star = document.querySelectorAll(".star");
+  let currentOpacity = parseFloat(window.getComputedStyle($star[index]).getPropertyValue("opacity"));
+
+  if (success) {
+    currentOpacity += 0.5;
+    $star[index].style.opacity = currentOpacity;
+
+    if (currentOpacity === 1) {
+      index += 1;
+    }
+  }
+}
+
 function hideStartButton() {
   document.querySelector("#start-button").className = "hidden";
+}
+
+function displayStars() {
+  const $star = document.querySelectorAll(".star");
+  $star.forEach((star) => {
+    star.className = "star";
+  });
 }
 
 function setTableClickable(isClickeable) {
