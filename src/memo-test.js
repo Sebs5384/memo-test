@@ -54,7 +54,7 @@ function handleClicks(click) {
       matchedCards.push(...[actualClick, previousClick]);
 
       if (matchedCards.length === 12) {
-        console.log("ganaste");
+        userWins();
       }
     } else {
       setTableClickable(false);
@@ -105,4 +105,19 @@ function matchCards(card) {
 function removeFlippedCards(card) {
   card.classList.remove("flipped");
   document.querySelector(".flipped").classList.remove("flipped");
+}
+
+function userWins() {
+  const $body = document.querySelector("body");
+  let opacity = 1;
+
+  $body.style.backgroundImage = "url(img/final.png)";
+  let timer = setInterval(() => {
+    if (opacity <= 0) {
+      clearInterval(timer);
+    } else {
+      opacity -= 0.1;
+      $body.style.opacity = opacity;
+    }
+  }, 1000);
 }

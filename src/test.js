@@ -8,14 +8,11 @@ function testShuffleArray() {
 }
 
 function testGetSetOfCards() {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const arrayNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const setOfNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
-  console.assert(JSON.stringify(getSetOfCards(array)) === JSON.stringify(setOfNumbers), "getSetOfCards is not working as intended");
+  console.assert(JSON.stringify(getSetOfCards(arrayNumbers)) === JSON.stringify(setOfNumbers), "getSetOfCards is not working as intended");
 }
-
-function testShuffledSetOfCards() {}
 
 testShuffleArray();
 testGetSetOfCards();
-testShuffledSetOfCards();
