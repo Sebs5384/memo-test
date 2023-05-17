@@ -38,6 +38,9 @@ function createCards(cards) {
 }
 
 function handleClicks(click) {
+  const $gol = document.querySelector("#gol");
+  const $whistle = document.querySelector("#whistle");
+  const $lastGoal = document.querySelector("#last-goal");
   let actualClick = click;
   actualClick.classList.add("col-3", "gy-1", "cards", "flipped");
 
@@ -53,10 +56,17 @@ function handleClicks(click) {
       glowStars(success);
       matchedCards.push(...[actualClick, previousClick]);
 
+      if (matchedCards.length === 10) {
+        $lastGoal.play();
+      } else {
+        $gol.play();
+      }
+
       if (matchedCards.length === 12) {
         userWins();
       }
     } else {
+      $whistle.play();
       setTableClickable(false);
       setTimeout(() => {
         removeFlippedCards(click);
@@ -109,9 +119,11 @@ function removeFlippedCards(card) {
 
 function userWins() {
   const $body = document.querySelector("body");
+  const $winnerChant = document.querySelector("#argentina-chant");
   let opacity = 1;
-
   $body.style.backgroundImage = "url(img/final.png)";
+  $winnerChant.play();
+
   let timer = setInterval(() => {
     if (opacity <= 0) {
       clearInterval(timer);
