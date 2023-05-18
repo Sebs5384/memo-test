@@ -172,7 +172,7 @@ function changeCards() {
 function changeHeader() {
   setTimeout(() => {
     const $headLetter = document.querySelector("#head-container strong");
-    $headLetter.innerText = "Winner";
+    $headLetter.innerText = "You win !";
 
     setStarsVisibility("star hidden");
     setStartButton("btn btn-success");
