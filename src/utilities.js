@@ -1,6 +1,6 @@
 let cardValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 let previousClick = "";
-const matchedCards = [];
+let matchedCards = [];
 let index = 0;
 
 function shuffleArray(array) {

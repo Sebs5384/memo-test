@@ -121,6 +121,7 @@ function removeFlippedCards(card) {
 function userWins() {
   const $body = document.querySelector("body");
   const $winnerChant = document.querySelector("#argentina-chant");
+
   $body.style.backgroundImage = "url(img/final.png)";
   $winnerChant.play();
   decreaseBodyOpacity();
@@ -169,9 +170,37 @@ function changeCards() {
 }
 
 function changeHeader() {
-  const $headLetter = document.querySelector("#head-container strong");
-  $headLetter.innerText = "You win !!!";
+  setTimeout(() => {
+    const $headLetter = document.querySelector("#head-container strong");
+    $headLetter.innerText = "Winner";
 
-  setStarsVisibility("star hidden");
-  setStartButton("btn btn-success");
+    setStarsVisibility("star hidden");
+    setStartButton("btn btn-success");
+  }, 15000);
+}
+
+function resetGame() {
+  const $cards = document.querySelectorAll("#table img+img");
+  const $backCards = document.querySelectorAll("#table img");
+  const $stars = document.querySelectorAll(".star");
+  const $body = document.querySelector("body");
+  const $winnerChant = document.querySelector("#argentina-chant");
+  const $headLetter = document.querySelector("#head-container strong");
+  index = 0;
+  matchedCards = [];
+
+  $cards.forEach((card) => card.remove());
+
+  $backCards.forEach((backCard) => {
+    backCard.className = "img-thumbnail cards col-3 gy-1";
+  });
+
+  $stars.forEach((star) => {
+    star.className = "star hidden";
+    star.style.opacity = 0;
+  });
+
+  $body.style.backgroundImage = "url(img/world-cup-qatar-2022-logo.png)";
+  $headLetter.innerText = "Memo Test";
+  $winnerChant.pause();
 }
