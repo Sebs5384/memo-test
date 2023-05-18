@@ -1,4 +1,5 @@
 document.querySelector("#start-button").onclick = () => {
+  resetGame();
   startGame();
 };
 
@@ -13,8 +14,8 @@ document.querySelector("#table").onclick = (event) => {
 
 function startGame() {
   const cards = shuffledSetOfCards(cardValues);
-  hideStartButton();
-  displayStars();
+  setStartButton("hidden");
+  setStarsVisibility("star");
   createCards(cards);
   setTableClickable(true);
 }
@@ -91,14 +92,14 @@ function glowStars(success) {
   }
 }
 
-function hideStartButton() {
-  document.querySelector("#start-button").className = "hidden";
+function setStartButton(value) {
+  document.querySelector("#start-button").className = value;
 }
 
-function displayStars() {
+function setStarsVisibility(value) {
   const $star = document.querySelectorAll(".star");
   $star.forEach((star) => {
-    star.className = "star";
+    star.className = value;
   });
 }
 
@@ -120,16 +121,57 @@ function removeFlippedCards(card) {
 function userWins() {
   const $body = document.querySelector("body");
   const $winnerChant = document.querySelector("#argentina-chant");
-  let opacity = 1;
   $body.style.backgroundImage = "url(img/final.png)";
   $winnerChant.play();
+  decreaseBodyOpacity();
+  increaseBodyOpacity();
+  changeCards();
+  changeHeader();
+}
 
-  let timer = setInterval(() => {
+function decreaseBodyOpacity() {
+  const $body = document.querySelector("body");
+  let opacity = 1;
+  let decreaseOpacityTimer = setInterval(() => {
     if (opacity <= 0) {
-      clearInterval(timer);
+      clearInterval(decreaseOpacityTimer);
     } else {
       opacity -= 0.1;
       $body.style.opacity = opacity;
     }
-  }, 1000);
+  }, 1500);
+}
+
+function increaseBodyOpacity() {
+  const $body = document.querySelector("body");
+  let opacity = 0;
+  setTimeout(() => {
+    let increaseOpacityTimer = setInterval(() => {
+      if (opacity >= 1) {
+        clearInterval(increaseOpacityTimer);
+      } else {
+        opacity += 0.1;
+        $body.style.opacity = opacity;
+      }
+    }, 1500);
+  }, 15000);
+}
+
+function changeCards() {
+  const $cards = document.querySelectorAll("#table img+img");
+
+  setTimeout(() => {
+    $cards.forEach((card, index) => {
+      index += 1;
+      card.src = `img/fig-${index}.jpg`;
+    });
+  }, 15000);
+}
+
+function changeHeader() {
+  const $headLetter = document.querySelector("#head-container strong");
+  $headLetter.innerText = "You win !!!";
+
+  setStarsVisibility("star hidden");
+  setStartButton("btn btn-success");
 }
