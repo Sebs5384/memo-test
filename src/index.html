@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memo-test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="memo-test.css" />
+  </head>
+  <body>
+    <div class="container alert alert-dark" id="head-container">
+      <div class="row">
+        <div class="col-4 text-end">
+          <img src="img/world-cup-trophy.png" class="world-cup-trophy" />
+        </div>
+        <div class="col-4">
+          <figure class="text-center">
+            <blockquote class="blockquote">
+              <strong class="display-6">Memo Test</strong>
+            </blockquote>
+            <blockquote class="blockquote">
+              <button class="btn btn-success" id="start-button">Start Game</button>
+              <img src="img/star.png" class="star hidden" />
+              <img src="img/star.png" class="star hidden" />
+              <img src="img/star.png" class="star hidden" />
+            </blockquote>
+          </figure>
+        </div>
+        <div class="col-4 text-start">
+          <img src="img/world-cup-trophy.png" class="world-cup-trophy" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container overflow-hidden text-center">
+      <div id="table">
+        <div class="row gx-1">
+          <div class="col-3 gy-1 cards-container">
+            <img src="img/unflipped-card-1.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-2.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-3.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-4.jpg" class="img-thumbnail cards" />
+          </div>
+        </div>
+        <div class="row gx-1">
+          <div class="col-3 gy-1 cards-container">
+            <img src="img/unflipped-card-5.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-6.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-7.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-8.jpg" class="img-thumbnail cards" />
+          </div>
+        </div>
+        <div class="row gx-1">
+          <div class="col-3 gy-1 cards-container">
+            <img src="img/unflipped-card-9.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-10.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-11.jpg" class="img-thumbnail cards" />
+          </div>
+          <div class="col-3 cards-container">
+            <img src="img/unflipped-card-12.jpg" class="img-thumbnail cards" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden">
+      <audio id="argentina-chant"><source src="audio/argentina-chant.mp3" type="Audio/mp3" /></audio>
+      <audio id="whistle"><source src="audio/whistle.mp3" type="Audio/mp3" /></audio>
+      <audio id="gol"><source src="audio/gol.mp3" type="Audio/mp3" /></audio>
+      <audio id="last-goal"><source src="audio/last-goal.mp3" type="Audio/mp3" /></audio>
+    </div>
+  </body>
+  <script src="utilities.js"></script>
+  <script src="test.js"></script>
+  <script src="memo-test.js"></script>
+</html>

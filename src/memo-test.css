@@ -1,0 +1,114 @@
+body {
+  background-image: url(img/world-cup-qatar-2022-logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#head-container {
+  background-image: url(img/qatar-background.jpg);
+}
+
+.cards {
+  width: 150px;
+  height: 190px;
+  border-color: gold;
+}
+
+.world-cup-trophy {
+  height: 75px;
+  width: 75px;
+}
+
+.star {
+  height: 38px;
+  width: 38px;
+  opacity: 0;
+}
+
+strong {
+  color: gold;
+  font-family: Verdana, sans-serif;
+}
+
+#table div div {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#table img {
+  transform: rotateY(180deg);
+  transition: 1s;
+}
+
+#table img + img {
+  transform: rotateY(180deg);
+  transition: 1s;
+  backface-visibility: hidden;
+  position: absolute;
+  left: 65px;
+  top: 0px;
+}
+
+#table div div img.flipped,
+#table div div img.flipped + img {
+  transform: rotateY(0deg);
+}
+
+#table div div img.matched,
+#table div div img.matched + img {
+  transform: rotateY(0deg);
+}
+
+.hidden {
+  display: none;
+}
+
+#table {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+  #head-container {
+    height: 150px;
+    width: 350px;
+  }
+  #start-button {
+    height: 40px;
+    font-size: 10px;
+  }
+  #table {
+    padding: 10px;
+  }
+  .star {
+    height: 20px;
+    width: 20px;
+  }
+  .display-6 {
+    font-size: 16.5px;
+  }
+  .world-cup-trophy {
+    height: 50px;
+    width: 50px;
+  }
+
+  .cards {
+    height: auto;
+    width: auto;
+  }
+
+  .cards-container {
+    padding: 5px;
+  }
+
+  #table img + img {
+    height: auto;
+    width: auto;
+    left: 0px;
+    top: 0px;
+  }
+
+  body {
+    height: 720px;
+    width: auto;
+  }
+}
